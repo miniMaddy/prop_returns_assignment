@@ -114,7 +114,7 @@ for row in table.find('tbody').find_all('tr'):
 # Creating a dataframe and storing it in a csv file so that we have a backup of scraped data in case something goes wrong.
 df = pd.DataFrame(data, columns=translated_headers)
 
-df.to_csv('output2.csv', index=False)
+df.to_csv('output.csv', index=False)
 
 # Closing the webdriver
 driver.close()
@@ -122,6 +122,8 @@ driver.close()
 """
 Converting the data into a suitable format for the database
 """
+
+df = pd.read_csv('output.csv')
 
 df['Year'] = pd.to_datetime(df['Year'])
 
